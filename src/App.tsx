@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-const App: React.FC = () => {
+// SCSS
+import './scss/variables.scss';
+import './scss/bootstrap.scss';
+
+function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="row">
+
+        {/* Search Box */}
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+            <button type="button" className="btn btn-primary btn-lg btn-block">Block level button</button>
+            </div>
+          </div>
+        </div>
+
+        {/* Pokemon Info */}
+        <div className="col-md-6">
+          <div className="card card-secondary">
+            <div className="card-body">
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
