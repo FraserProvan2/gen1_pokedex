@@ -7,11 +7,18 @@ import SearchPokemon from './children/SearchPokemon';
 import './../scss/variables.scss';
 import './../scss/bootstrap.scss';
 
+// Models
+import PokemonModal from '../models/Pokemon';
+let Pokemon = new PokemonModal;
+console.log(Pokemon.getById(1));
+
 // Parent component to the application, this is where
 // the State lives
 
 class App extends Component {
-  state = {};
+  state = {
+    pokemonData: Pokemon.getById(1)
+  };
 
   render() {
     return (
