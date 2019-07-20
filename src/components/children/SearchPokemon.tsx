@@ -5,8 +5,15 @@ class SearchPokemon extends React.Component {
     return (
       <div className="card">
         <div className="card-body">
-          <h5>Search Pokémon</h5>
-          <div className="row mb-2">
+          <h6>Search Pokémon</h6>
+          
+          {/* Input */}
+          <div className="form-row mb-2">
+            <div className="col-3">
+              <select className="form-control text-center">
+                <option className="form-control">1</option>
+              </select>
+            </div>
             <div className="col-9">
               <input
                 className="form-control text-center"
@@ -14,12 +21,9 @@ class SearchPokemon extends React.Component {
                 placeholder="Name"
               />
             </div>
-            <div className="col-3">
-              <select className="form-control text-center">
-                <option className="form-control">1</option>
-              </select>
-            </div>
           </div>
+
+          {/* Submit */}
           <div className="row">
             <div className="col-12">
               <button
@@ -30,6 +34,7 @@ class SearchPokemon extends React.Component {
               </button>
             </div>
           </div>
+
         </div>
       </div>
     );

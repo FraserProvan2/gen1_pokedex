@@ -1,32 +1,32 @@
-import React from 'react';
-import SearchPokemon from './SearchPokemon';
+import React, { Component } from 'react';
+
+// Components
+import SearchPokemon from './children/SearchPokemon';
 
 // SCSS
 import './../scss/variables.scss';
 import './../scss/bootstrap.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <div className="row">
+// Parent component to the application, this is where
+// the State lives
 
-        {/* Search Box */}
-        <div className="col-md-7">
-          <SearchPokemon />
-        </div>
+class App extends Component {
+  state = {};
 
-        {/* Pokemon Info */}
-        <div className="col-md-5">
-          <div className="card card-secondary">
-            <div className="card-body">
-              <h5>Pokémon Info</h5>
-            </div>
+  render() {
+    return (
+      <div className="App">
+        <div className="row justify-content-center">
+
+          {/* Search Box */}
+          <div className="col-md-8">
+            <SearchPokemon />
           </div>
-        </div>
 
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
