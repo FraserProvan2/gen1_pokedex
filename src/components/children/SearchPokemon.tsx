@@ -1,6 +1,12 @@
 import React from 'react';
 
 class SearchPokemon extends React.Component {
+  constructor(props: any) {
+    super(props);
+
+    console.log(props.function);
+  } 
+
   render() {
     return (
       <div className="card">
@@ -29,6 +35,7 @@ class SearchPokemon extends React.Component {
               <button
                 type="button"
                 className="btn btn-primary btn-lg btn-block"
+                // onClick={this.props.function}
               >
                 Go
               </button>

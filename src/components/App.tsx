@@ -9,16 +9,21 @@ import './../scss/bootstrap.scss';
 
 // Models
 import PokemonModal from '../models/Pokemon';
-let Pokemon = new PokemonModal;
-console.log(Pokemon.getById(1));
-
-// Parent component to the application, this is where
-// the State lives
+const Pokemon = new PokemonModal;
 
 class App extends Component {
-  state = {
-    pokemonData: Pokemon.getById(1)
-  };
+
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      pokemonData: {},
+      error: "",
+      function: this.setPokemonDataById
+    };
+
+    this.setPokemonDataById = this.setPokemonDataById.bind(this);
+  } 
 
   render() {
     return (
@@ -27,13 +32,29 @@ class App extends Component {
 
           {/* Search Box */}
           <div className="col-md-8">
-            <SearchPokemon />
+            <SearchPokemon 
+              {...this.state}
+            />
           </div>
 
         </div>
       </div>
     );
   }
+  
+  // Methods
+
+  setPokemonDataById(id: number) {
+    return Pokemon.getById(id)
+      .then((pokemonData: any) => {
+        this.setState({ pokemonData });
+      })
+      .catch((error: any) => {
+        this.setState({ error });
+      });
+  }
+
+
 }
 
 export default App;
