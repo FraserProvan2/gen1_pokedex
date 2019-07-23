@@ -19,10 +19,10 @@ class App extends Component {
     this.state = {
       pokemonData: {},
       error: "",
-      function: this.setPokemonDataById
     };
 
-    this.setPokemonDataById = this.setPokemonDataById.bind(this);
+    // binding functions
+    this.handleClick = this.handleClick.bind(this);
   } 
 
   render() {
@@ -33,7 +33,7 @@ class App extends Component {
           {/* Search Box */}
           <div className="col-md-8">
             <SearchPokemon 
-              {...this.state}
+                forChildOnClick={this.handleClick}
             />
           </div>
 
@@ -44,17 +44,21 @@ class App extends Component {
   
   // Methods
 
+  handleClick() {
+    console.log('Click happened');
+  }
+  
   setPokemonDataById(id: number) {
     return Pokemon.getById(id)
-      .then((pokemonData: any) => {
-        this.setState({ pokemonData });
-      })
-      .catch((error: any) => {
-        this.setState({ error });
-      });
+    .then((pokemonData: any) => {
+      this.setState({ pokemonData });
+    })
+    .catch((error: any) => {
+      this.setState({ error });
+    });
   }
-
-
+  
+  
 }
 
 export default App;

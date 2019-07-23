@@ -1,6 +1,12 @@
 import React from 'react';
 
-class SearchPokemon extends React.Component {
+interface Props {
+  forChildOnClick: () => void;
+}
+
+interface State {}
+
+class SearchPokemon extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
 
@@ -35,7 +41,7 @@ class SearchPokemon extends React.Component {
               <button
                 type="button"
                 className="btn btn-primary btn-lg btn-block"
-                // onClick={this.props.function}
+                onClick={this.props.forChildOnClick}
               >
                 Go
               </button>
