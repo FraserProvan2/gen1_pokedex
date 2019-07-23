@@ -11,14 +11,30 @@ import "./../scss/bootstrap.scss";
 import PokemonModel from "../models/Pokemon";
 const Pokemon = new PokemonModel();
 
-class App extends Component {
+interface Props {}
+
+interface State {
+  pokemonData: {
+    id: number,
+    name: string 
+  },
+  error: ""
+}
+
+class App extends Component<Props, State> {
   constructor(props: any) {
     super(props);
 
     this.state = {
-      pokemonData: {},
+      pokemonData: { 
+        id: 1,
+        name: "" 
+      },
       error: ""
     };
+
+    // default ID
+    this.setPokemonDataById(1);
 
     // binding functions
     this.setPokemonDataById = this.setPokemonDataById.bind(this);
@@ -32,6 +48,7 @@ class App extends Component {
           <div className="col-md-8">
             <SearchPokemon
               setById={this.setPokemonDataById}
+              pokemonData={this.state.pokemonData}
             />
           </div>
         </div>
@@ -41,7 +58,7 @@ class App extends Component {
 
   // Methods
 
-  setPokemonDataById = (id: number): any => {
+  setPokemonDataById = (id: number) => {
     return Pokemon.getById(id)
       .then((pokemonData: any) => {
         this.setState({ pokemonData });

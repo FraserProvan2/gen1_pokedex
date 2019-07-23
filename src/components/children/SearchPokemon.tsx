@@ -2,18 +2,23 @@ import React from "react";
 
 interface Props {
   setById: (id: number) => any,
+  pokemonData: { 
+    id: number,
+    name: string 
+  } 
 }
 
 interface State {
-  pokemonNumber: 1,
+  pokemonName: string
 }
 
 class SearchPokemon extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
 
-    this.state = {
-      pokemonNumber: 1
+    // start for ID: 1
+    this.state = { 
+      pokemonName: this.props.pokemonData.name
     };
   }
 
@@ -29,7 +34,7 @@ class SearchPokemon extends React.Component<Props, State> {
               <select
                 className="form-control text-center"
                 onChange={this.updatePokemonNumber.bind(this)}
-                value={this.state.pokemonNumber}
+                value={ this.props.pokemonData.id ? this.props.pokemonData.id : 1 }
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -41,6 +46,8 @@ class SearchPokemon extends React.Component<Props, State> {
                 className="form-control text-center"
                 type="text"
                 placeholder="Name"
+                value={ this.ucFirst(this.props.pokemonData.name) ? this.ucFirst(this.props.pokemonData.name) : "" }
+                // onChange={}
               />
             </div>
           </div>
@@ -51,17 +58,21 @@ class SearchPokemon extends React.Component<Props, State> {
   }
 
   updatePokemonNumber(e: any) {
-    this.setState({
-      pokemonNumber: e.target.value
-    });
+    this.props.setById(e.target.value);
 
-    this.props.setById(this.state.pokemonNumber);
+    this.setState({
+      pokemonName: this.props.pokemonData.name
+    });
+  }
+
+  ucFirst(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
 
 export default SearchPokemon;
 
 // TODO
-// 1. WHEN MOUNTED, automatically call setById to 1
-// 2. for loop to calc select number 1-151
-// 3. if pokemonData prop (to be passed) is set, use this value for pokemon number/name
+// 1. for loop to calc select number 1-151
+// 2. extract ucFirst to helper type file
+// 3. Fix Failed prop type: You provided a `value` error
