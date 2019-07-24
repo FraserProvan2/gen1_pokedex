@@ -1,17 +1,19 @@
 import React from "react";
-import Utility from "../../helpers/Utility";
+
+// Components
+import SearchInput from "./_SearchInput";
 
 interface Props {
-  setById: (id: number) => any,
-  pokemonData: { 
-    id: number,
-    name: string 
-  } 
+  setById: (id: number) => any;
+  pokemonData: {
+    id: number;
+    name: string;
+  };
 }
 
 interface State {
-  pokemonName: string,
-  pokemonNumbers: any[]
+  pokemonName: string;
+  pokemonNumbers: any[];
 }
 
 class SearchPokemon extends React.Component<Props, State> {
@@ -19,11 +21,10 @@ class SearchPokemon extends React.Component<Props, State> {
     super(props);
 
     // start for ID: 1
-    this.state = { 
+    this.state = {
       pokemonName: this.props.pokemonData.name,
       pokemonNumbers: this.createSelectablePokemonNumbers()
     };
-
   }
 
   render() {
@@ -38,26 +39,24 @@ class SearchPokemon extends React.Component<Props, State> {
               <select
                 className="form-control text-center"
                 onChange={this.updatePokemonNumber.bind(this)}
-                value={ this.props.pokemonData.id ? this.props.pokemonData.id : 1 }
-              >
-                {
-                  this.state.pokemonNumbers.map(numbers => {
-                    return (
-                      <option key={numbers.value} value={numbers.value}>
-                        {numbers.value}
-                      </option>
-                    )
-                  })
+                value={
+                  this.props.pokemonData.id ? this.props.pokemonData.id : 1
                 }
+              >
+                {this.state.pokemonNumbers.map(numbers => {
+                  return (
+                    <option key={numbers.value} value={numbers.value}>
+                      {numbers.value}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className="col-9">
-              <input
-                className="form-control text-center"
-                type="text"
-                placeholder="Name"
-                value={ Utility.ucFirst(this.props.pokemonData.name) ? Utility.ucFirst(this.props.pokemonData.name) : "" }
-                // onChange={}
+              <SearchInput
+                name={
+                  this.props.pokemonData.name ? this.props.pokemonData.name : ""
+                }
               />
             </div>
           </div>
@@ -68,8 +67,8 @@ class SearchPokemon extends React.Component<Props, State> {
 
   createSelectablePokemonNumbers() {
     let availableNumbers = [];
-      for (let i = 1; i <= 151; i++) { 
-        availableNumbers[i] = { 'value' : i }
+    for (let i = 1; i <= 151; i++) {
+      availableNumbers[i] = { value: i };
     }
     return availableNumbers;
   }
@@ -81,10 +80,6 @@ class SearchPokemon extends React.Component<Props, State> {
       pokemonName: this.props.pokemonData.name
     });
   }
-
 }
 
 export default SearchPokemon;
-
-//TODO
-// select pokemon names from dropdown file json, that auto searches that pokemon

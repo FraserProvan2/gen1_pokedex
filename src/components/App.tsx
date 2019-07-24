@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Components
-import SearchPokemon from "./children/SearchPokemon";
+import SearchPokemon from "./search/SearchPokemon";
 
 // SCSS
 import "./../scss/variables.scss";
@@ -15,10 +15,10 @@ interface Props {}
 
 interface State {
   pokemonData: {
-    id: number,
-    name: string 
-  },
-  error: ""
+    id: number;
+    name: string;
+  };
+  error: "";
 }
 
 class App extends Component<Props, State> {
@@ -26,9 +26,9 @@ class App extends Component<Props, State> {
     super(props);
 
     this.state = {
-      pokemonData: { 
+      pokemonData: {
         id: 1,
-        name: "" 
+        name: ""
       },
       error: ""
     };
