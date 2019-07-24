@@ -1,4 +1,5 @@
 import React from "react";
+import Utility from "../../helpers/Utility";
 
 interface Props {
   setById: (id: number) => any,
@@ -20,6 +21,7 @@ class SearchPokemon extends React.Component<Props, State> {
     this.state = { 
       pokemonName: this.props.pokemonData.name
     };
+
   }
 
   render() {
@@ -46,12 +48,12 @@ class SearchPokemon extends React.Component<Props, State> {
                 className="form-control text-center"
                 type="text"
                 placeholder="Name"
-                value={ this.ucFirst(this.props.pokemonData.name) ? this.ucFirst(this.props.pokemonData.name) : "" }
+                value={ Utility.ucFirst(this.props.pokemonData.name) ? Utility.ucFirst(this.props.pokemonData.name) : "" }
                 // onChange={}
               />
+
             </div>
           </div>
-          
         </div>
       </div>
     );
@@ -65,14 +67,10 @@ class SearchPokemon extends React.Component<Props, State> {
     });
   }
 
-  ucFirst(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 }
 
 export default SearchPokemon;
 
 // TODO
 // 1. for loop to calc select number 1-151
-// 2. extract ucFirst to helper type file
-// 3. Fix Failed prop type: You provided a `value` error
+// 2. Fix Failed prop type: You provided a `value` error
