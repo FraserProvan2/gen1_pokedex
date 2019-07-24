@@ -10,7 +10,8 @@ interface Props {
 }
 
 interface State {
-  pokemonName: string
+  pokemonName: string,
+  pokemonNumbers: any[]
 }
 
 class SearchPokemon extends React.Component<Props, State> {
@@ -19,7 +20,8 @@ class SearchPokemon extends React.Component<Props, State> {
 
     // start for ID: 1
     this.state = { 
-      pokemonName: this.props.pokemonData.name
+      pokemonName: this.props.pokemonData.name,
+      pokemonNumbers: this.createSelectablePokemonNumbers()
     };
 
   }
@@ -38,9 +40,15 @@ class SearchPokemon extends React.Component<Props, State> {
                 onChange={this.updatePokemonNumber.bind(this)}
                 value={ this.props.pokemonData.id ? this.props.pokemonData.id : 1 }
               >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                {
+                  this.state.pokemonNumbers.map(numbers => {
+                    return (
+                      <option key={numbers.value} value={numbers.value}>
+                        {numbers.value}
+                      </option>
+                    )
+                  })
+                }
               </select>
             </div>
             <div className="col-9">
@@ -51,12 +59,19 @@ class SearchPokemon extends React.Component<Props, State> {
                 value={ Utility.ucFirst(this.props.pokemonData.name) ? Utility.ucFirst(this.props.pokemonData.name) : "" }
                 // onChange={}
               />
-
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  createSelectablePokemonNumbers() {
+    let availableNumbers = [];
+      for (let i = 1; i <= 151; i++) { 
+        availableNumbers[i] = { 'value' : i }
+    }
+    return availableNumbers;
   }
 
   updatePokemonNumber(e: any) {
@@ -71,6 +86,5 @@ class SearchPokemon extends React.Component<Props, State> {
 
 export default SearchPokemon;
 
-// TODO
-// 1. for loop to calc select number 1-151
-// 2. Fix Failed prop type: You provided a `value` error
+//TODO
+// select pokemon names from dropdown file json, that auto searches that pokemon
