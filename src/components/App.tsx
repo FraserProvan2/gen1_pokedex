@@ -7,14 +7,14 @@ import NextPrevious from "./next-previous/NextPrevious";
 // SCSS
 import "./../scss/variables.scss";
 import "./../scss/bootstrap.scss";
-import "./../scss/override_bs.scss";
+import "./../scss/main.scss";
 
 // Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
-  faQuestionCircle
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Models
