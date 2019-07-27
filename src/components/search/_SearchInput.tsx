@@ -83,7 +83,7 @@ class SearchInput extends React.Component<Props, State> {
 
     const regex = new RegExp("^" + escapedValue, "i");
 
-    return pokemonNames.filter(language => regex.test(language.name));
+    return pokemonNames.filter(pokemon => regex.test(pokemon.name));
   }
 
   getSuggestionValue = (suggestion: any) => {
@@ -93,7 +93,7 @@ class SearchInput extends React.Component<Props, State> {
   };
 
   renderSuggestion(suggestion: any) {
-    return <span>{suggestion.name}</span>;
+    return <span>{Utility.ucFirst(suggestion.name)}</span>;
   }
 }
 
