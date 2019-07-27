@@ -64,7 +64,7 @@ class App extends Component<Props, State> {
       <div className="App">
         {/* Search Box */}
         <div className="row justify-content-center mb-2">
-          <div className="col-md-8">
+          <div className="col-md-9">
             <SearchPokemon
               pokemonData={this.state.pokemonData}
               setByName={this.setPokemonDataByName}
@@ -75,7 +75,7 @@ class App extends Component<Props, State> {
 
         {/* Next - Previous */}
         <div className="row justify-content-center mb-2">
-          <div className="col-md-8">
+          <div className="col-md-9">
             <NextPrevious
               pokemonData={this.state.pokemonData}
               previousPokemon={this.previousPokemon}
