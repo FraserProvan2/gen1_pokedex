@@ -47,7 +47,7 @@ class SearchPokemon extends React.Component<Props, State> {
                 {this.state.pokemonNumbers.map(numbers => {
                   return (
                     <option key={numbers.value} value={numbers.value}>
-                      {numbers.value}
+                      { '#' + numbers.value}
                     </option>
                   );
                 })}
@@ -69,7 +69,7 @@ class SearchPokemon extends React.Component<Props, State> {
 
   createSelectablePokemonNumbers() {
     let availableNumbers = [];
-    for (let i = 1; i <= 151; i++) {
+    for (let i = 1; i <= 807; i++) {
       availableNumbers[i] = { value: i };
     }
     return availableNumbers;

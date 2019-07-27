@@ -44,8 +44,9 @@ class App extends Component<Props, State> {
   render() {
     return (
       <div className="App">
-        <div className="row justify-content-center">
-          {/* Search Box */}
+
+         {/* Search Box */}
+        <div className="row justify-content-center">   
           <div className="col-md-8">
             <SearchPokemon
               setByName={this.setPokemonDataByName}
@@ -54,11 +55,10 @@ class App extends Component<Props, State> {
             />
           </div>
         </div>
+        
       </div>
     );
   }
-
-  // Methods
 
   setPokemonDataById = (id: number) => {
     return Pokemon.getById(id)

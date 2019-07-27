@@ -6,7 +6,7 @@ import Autosuggest from "react-autosuggest";
 import "./../../scss/autosuggest.scss";
 
 // data to AutoSuggest
-import pokemonNames from "./../../pokemonNames.json";
+import pokemonNames from "./pokemonNames.json";
 
 interface Props {
   name: string;
