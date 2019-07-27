@@ -36,6 +36,8 @@ interface State {
       front_shiny: string;
     };
     types: any[];
+    height: string;
+    weight: string;
   };
   error: "";
 }
@@ -52,7 +54,9 @@ class App extends Component<Props, State> {
           front_default: "",
           front_shiny: ""
         },
-        types: []
+        types: [],
+        height: "",
+        weight: "",
       },
       error: ""
     };

@@ -12,6 +12,8 @@ interface Props {
       front_default: string;
       front_shiny: string;
     };
+    height: string;
+    weight: string;
   };
 }
 
@@ -27,18 +29,28 @@ class PokemonInfo extends Component<Props, State> {
       <div className="card">
         <div className="card-body">
           <div className="row">
-            <div className="col-md-6 text-center">
-              <h5>
-                <span className="pokemon-index">#{this.pokemon().id}</span>{" "}
-                {Utility.ucFirst(this.pokemon().name)}
-              </h5>
-              <img
+            <div className="col-md-12 text-center">
+            <img
                 className="pokemon-img"
                 src={this.pokemon().sprites.front_default}
                 alt=""
               />
+              <h5>
+                <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
+                {Utility.ucFirst(this.pokemon().name)}
+              </h5>
+   
             </div>
           </div>
+          <div className="row">
+            <div className="col-md-6">
+              <p>Height: {this.pokemon().height}, Weight: {this.pokemon().weight}</p>
+            </div>
+            <div className="col-md-6 pt-5">
+
+            </div>
+          </div>
+
 
           {/* Moves */}
           <div className="row">
