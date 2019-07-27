@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // Components
 import SearchPokemon from "./search/SearchPokemon";
 import NextPrevious from "./next-previous/NextPrevious";
+import PokemonInfo from "./pokemon-info/PokemonInfo";
 
 // SCSS
 import "./../scss/variables.scss";
@@ -14,7 +15,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faArrowCircleLeft,
   faArrowCircleRight,
-  faQuestionCircle,
+  faQuestionCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 // Models
@@ -30,6 +31,11 @@ interface State {
   pokemonData: {
     id: number;
     name: string;
+    sprites: {
+      front_default: string;
+      front_shiny: string;
+    };
+    types: any[];
   };
   error: "";
 }
@@ -41,7 +47,12 @@ class App extends Component<Props, State> {
     this.state = {
       pokemonData: {
         id: 1,
-        name: ""
+        name: "",
+        sprites: {
+          front_default: "",
+          front_shiny: ""
+        },
+        types: []
       },
       error: ""
     };
@@ -82,6 +93,13 @@ class App extends Component<Props, State> {
               nextPokemon={this.nextPokemon}
               randomPokemon={this.randomPokemon}
             />
+          </div>
+        </div>
+
+        {/* Pokemon Info */}
+        <div className="row justify-content-center mb-2">
+          <div className="col-md-9">
+            <PokemonInfo pokemonData={this.state.pokemonData} />
           </div>
         </div>
       </div>

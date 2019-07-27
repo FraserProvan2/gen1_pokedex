@@ -1,9 +1,18 @@
-
 body {
-    background-image: url('./../images/bg.png');
+  background-image: url("./../images/bg.png");
+}
+
+.pokemon-index {
+  color: #ff3232;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.pokemon-img {
+  width: 144px;
 }
 
 // Overriding Bootstrap
 .btn {
-    border-radius: 0.25rem;
+  border-radius: 0.25rem;
 }
