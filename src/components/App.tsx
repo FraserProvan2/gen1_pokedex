@@ -38,6 +38,7 @@ class App extends Component<Props, State> {
 
     // binding functions
     this.setPokemonDataById = this.setPokemonDataById.bind(this);
+    this.setPokemonDataByName = this.setPokemonDataByName.bind(this);
   }
 
   render() {
@@ -47,6 +48,7 @@ class App extends Component<Props, State> {
           {/* Search Box */}
           <div className="col-md-8">
             <SearchPokemon
+              setByName={this.setPokemonDataByName}
               setById={this.setPokemonDataById}
               pokemonData={this.state.pokemonData}
             />
@@ -60,6 +62,16 @@ class App extends Component<Props, State> {
 
   setPokemonDataById = (id: number) => {
     return Pokemon.getById(id)
+      .then((pokemonData: any) => {
+        this.setState({ pokemonData });
+      })
+      .catch((error: any) => {
+        this.setState({ error });
+      });
+  };
+
+  setPokemonDataByName = (name: string) => {
+    return Pokemon.getByName(name)
       .then((pokemonData: any) => {
         this.setState({ pokemonData });
       })

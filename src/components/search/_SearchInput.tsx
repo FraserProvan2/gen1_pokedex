@@ -10,6 +10,7 @@ import pokemonNames from "./../../pokemonNames.json";
 
 interface Props {
   name: string;
+  searchPokemon: (name: string) => any;
 }
 
 interface State {
@@ -85,13 +86,11 @@ class SearchInput extends React.Component<Props, State> {
     return pokemonNames.filter(language => regex.test(language.name));
   }
 
-  getSuggestionValue(suggestion: any) {
-    alert(suggestion.name);
-
-    // SENT TO FUNCTION HERE
+  getSuggestionValue = (suggestion: any) => {
+    this.props.searchPokemon(suggestion.name);
 
     return "";
-  }
+  };
 
   renderSuggestion(suggestion: any) {
     return <span>{suggestion.name}</span>;

@@ -5,6 +5,7 @@ import SearchInput from "./_SearchInput";
 
 interface Props {
   setById: (id: number) => any;
+  setByName: (name: string) => any;
   pokemonData: {
     id: number;
     name: string;
@@ -57,6 +58,7 @@ class SearchPokemon extends React.Component<Props, State> {
                 name={
                   this.props.pokemonData.name ? this.props.pokemonData.name : ""
                 }
+                searchPokemon={this.props.setByName}
               />
             </div>
           </div>
