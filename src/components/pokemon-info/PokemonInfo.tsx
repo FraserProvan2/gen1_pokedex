@@ -1,36 +1,24 @@
 import React, { Component } from "react";
 import Utility from "../../helpers/Utility";
 
-// SCSS
-import "./../../scss/pokemonTypes.scss";
+// Models
+import PokemonData from "../../models/PokemonData";
 
 interface Props {
-  pokemonData: {
-    id: number;
-    name: string;
-    sprites: {
-      front_default: string;
-      front_shiny: string;
-    };
-    height: string;
-    weight: string;
-  };
+  pokemonData: PokemonData;
 }
 
 interface State {}
 
 class PokemonInfo extends Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="card">
         <div className="card-body">
           <div className="row">
+            {/* Pokemon Profile (Image and Name) */}
             <div className="col-md-12 text-center">
-            <img
+              <img
                 className="pokemon-img"
                 src={this.pokemon().sprites.front_default}
                 alt=""
@@ -39,23 +27,16 @@ class PokemonInfo extends Component<Props, State> {
                 <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
                 {Utility.ucFirst(this.pokemon().name)}
               </h5>
-   
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <p>Height: {this.pokemon().height}, Weight: {this.pokemon().weight}</p>
-            </div>
-            <div className="col-md-6 pt-5">
-
             </div>
           </div>
 
-
-          {/* Moves */}
+          {/* TBA */}
           <div className="row">
-            <div className="col-md-6" />
-            <div className="col-md-6" />
+            <div className="col-md-12">
+              <p>
+                Height: {this.pokemon().height}, Weight: {this.pokemon().weight}
+              </p>
+            </div>
           </div>
         </div>
       </div>

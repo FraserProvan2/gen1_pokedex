@@ -9,7 +9,10 @@ body {
 }
 
 .pokemon-img {
-  width: 160px;
+  width: 200px;
+  image-rendering: pixelated;
+  margin-bottom: -20px;
+  margin-top: -20px;
 }
 
 // Overriding Bootstrap

@@ -1,15 +1,5 @@
 import React, { Component } from "react";
 
-// Components
-import SearchPokemon from "./search/SearchPokemon";
-import NextPrevious from "./next-previous/NextPrevious";
-import PokemonInfo from "./pokemon-info/PokemonInfo";
-
-// SCSS
-import "./../scss/variables.scss";
-import "./../scss/bootstrap.scss";
-import "./../scss/main.scss";
-
 // Font Awesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -18,27 +8,28 @@ import {
   faQuestionCircle
 } from "@fortawesome/free-solid-svg-icons";
 
-// Models
-import PokemonModel from "../models/Pokemon";
+// Components
+import SearchPokemon from "./search/SearchPokemon";
+import NextPrevious from "./next-previous/NextPrevious";
+import PokemonInfo from "./pokemon-info/PokemonInfo";
 
-// Init
-const Pokemon = new PokemonModel();
+// Models
+import PokemonData from "./../models/PokemonData";
+
+// Helpers
+import Utility from "../helpers/Utility";
+
+// PokeAPI v2
+const PokeApiWrapper = require("pokedex-promise-v2");
+const PokeAPI = new PokeApiWrapper();
+
+// Init Fa
 library.add(faArrowCircleLeft, faArrowCircleRight, faQuestionCircle);
 
 interface Props {}
 
 interface State {
-  pokemonData: {
-    id: number;
-    name: string;
-    sprites: {
-      front_default: string;
-      front_shiny: string;
-    };
-    types: any[];
-    height: string;
-    weight: string;
-  };
+  pokemonData: PokemonData;
   error: "";
 }
 
@@ -54,19 +45,17 @@ class App extends Component<Props, State> {
           front_default: "",
           front_shiny: ""
         },
-        types: [],
         height: "",
-        weight: "",
+        weight: ""
       },
       error: ""
     };
 
     // default ID
-    this.setPokemonDataById(1);
+    this.setPokemonData(Utility.randomPokemonId());
 
     // Search functions bound
-    this.setPokemonDataById = this.setPokemonDataById.bind(this);
-    this.setPokemonDataByName = this.setPokemonDataByName.bind(this);
+    this.setPokemonData = this.setPokemonData.bind(this);
 
     // Next Previous functions bound
     this.previousPokemon = this.previousPokemon.bind(this);
@@ -82,8 +71,7 @@ class App extends Component<Props, State> {
           <div className="col-md-9">
             <SearchPokemon
               pokemonData={this.state.pokemonData}
-              setByName={this.setPokemonDataByName}
-              setById={this.setPokemonDataById}
+              setPokemon={this.setPokemonData}
             />
           </div>
         </div>
@@ -110,18 +98,10 @@ class App extends Component<Props, State> {
     );
   }
 
-  setPokemonDataById = (id: number) => {
-    return Pokemon.getById(id)
-      .then((pokemonData: any) => {
-        this.setState({ pokemonData });
-      })
-      .catch((error: any) => {
-        this.setState({ error });
-      });
-  };
-
-  setPokemonDataByName = (name: string) => {
-    return Pokemon.getByName(name)
+  // GET pokemon (PokeAPI v2)
+  // param can either be a string to get data by Name, or a number to get by ID
+  setPokemonData = (value: any) => {
+    return PokeAPI.getPokemonByName(value)
       .then((pokemonData: any) => {
         this.setState({ pokemonData });
       })
@@ -131,15 +111,15 @@ class App extends Component<Props, State> {
   };
 
   previousPokemon = () => {
-    this.setPokemonDataById(this.state.pokemonData.id - 1);
+    this.setPokemonData(this.state.pokemonData.id - 1);
   };
 
   nextPokemon = () => {
-    this.setPokemonDataById(this.state.pokemonData.id + 1);
+    this.setPokemonData(this.state.pokemonData.id + 1);
   };
 
   randomPokemon = () => {
-    this.setPokemonDataById(Math.floor(Math.random() * 807 + 1));
+    this.setPokemonData(Utility.randomPokemonId());
   };
 }
 

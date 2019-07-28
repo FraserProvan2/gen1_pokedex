@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// Models
+import PokemonData from "../../models/PokemonData";
+
 interface Props {
   previousPokemon: () => any;
   nextPokemon: () => any;
   randomPokemon: () => any;
-  pokemonData: {
-    id: number;
-    name: string;
-  };
+  pokemonData: PokemonData;
 }
 
 interface State {}

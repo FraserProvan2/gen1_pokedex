@@ -3,13 +3,12 @@ import React from "react";
 // Components
 import SearchInput from "./_SearchInput";
 
+// Models
+import PokemonData from "../../models/PokemonData";
+
 interface Props {
-  setById: (id: number) => any;
-  setByName: (name: string) => any;
-  pokemonData: {
-    id: number;
-    name: string;
-  };
+  setPokemon: (value: any) => any;
+  pokemonData: PokemonData;
 }
 
 interface State {
@@ -47,7 +46,7 @@ class SearchPokemon extends React.Component<Props, State> {
                 {this.state.pokemonNumbers.map(numbers => {
                   return (
                     <option key={numbers.value} value={numbers.value}>
-                      { '#' + numbers.value}
+                      {"#" + numbers.value}
                     </option>
                   );
                 })}
@@ -58,7 +57,7 @@ class SearchPokemon extends React.Component<Props, State> {
                 name={
                   this.props.pokemonData.name ? this.props.pokemonData.name : ""
                 }
-                searchPokemon={this.props.setByName}
+                searchPokemon={this.props.setPokemon}
               />
             </div>
           </div>
@@ -76,7 +75,7 @@ class SearchPokemon extends React.Component<Props, State> {
   }
 
   updatePokemonNumber(e: any) {
-    this.props.setById(e.target.value);
+    this.props.setPokemon(e.target.value);
 
     this.setState({
       pokemonName: this.props.pokemonData.name

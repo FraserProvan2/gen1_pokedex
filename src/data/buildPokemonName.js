@@ -1,4 +1,4 @@
-// To run: node pokemonNamesBuild.js
+// To run: `node pokemonNamesBuild.js` in Root directory
 // if you get errors due to connection, reduce stopAtIndex and patch
 
 var fs = require("fs");
@@ -14,7 +14,6 @@ var stopAtIndex = 807;
 
 var i;
 for (i = startIndex; i <= stopAtIndex; i++) {
-    
   // Loop each promise
   promises.push(
     // gets info, pushes object to array
@@ -37,7 +36,7 @@ Promise.all(promises)
   .then(() => {
     // Write to File
     fs.writeFile(
-      "./pokemonNames.json",
+      "./pokemonNames_output.json",
       JSON.stringify(pokemonNames),
       err => {
         if (err) {
