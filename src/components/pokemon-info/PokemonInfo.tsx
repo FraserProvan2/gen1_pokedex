@@ -3,9 +3,11 @@ import Utility from "../../helpers/Utility";
 
 // Models
 import PokemonData from "../../models/PokemonData";
+import PokemonSpeciesData from "../../models/PokemonSpeciesData";
 
 interface Props {
   pokemonData: PokemonData;
+  PokemonSpeciesData: PokemonSpeciesData;
 }
 
 interface State {}
@@ -17,7 +19,7 @@ class PokemonInfo extends Component<Props, State> {
         <div className="card-body">
           {/* Pokemon Profile (Image and Name) */}
           <div className="row">
-            <div className="col-md-12 text-center">
+            <div className="col-md-12 text-center mb-2">
               <h5>
                 <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
                 {Utility.ucFirst(this.pokemon().name)}
@@ -37,14 +39,21 @@ class PokemonInfo extends Component<Props, State> {
 
           {/* Information */}
           <div className="row">
-            <div className="col-md-12">
-              {/* Height/Weight */}
-              <small>
-                Height: {this.pokemon().height}
-                <span className="measurement">hg</span>, Weight:{" "}
-                {this.pokemon().weight}
-                <span className="measurement">dm</span>
-              </small>
+            <div className="col-md-6">
+              <div className="pokemon-description p-3 m-1">
+                <small>"{this.getEnglishDescription()}"</small>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <p>
+                {/* Height/Weight */}
+                <small>
+                  Height: {this.pokemon().height}
+                  <span className="measurement">hg</span>, Weight:{" "}
+                  {this.pokemon().weight}
+                  <span className="measurement">dm</span>
+                </small>
+              </p>
             </div>
           </div>
         </div>
@@ -58,10 +67,8 @@ class PokemonInfo extends Component<Props, State> {
 
   getType = (slot: number): string => {
     if (slot === 0 && typeof this.pokemon().types[0] !== "undefined") {
-      console.log(this.pokemon().types[0].type.name);
       return this.pokemon().types[0].type.name;
     } else if (slot === 1 && typeof this.pokemon().types[1] !== "undefined") {
-      console.log(this.pokemon().types[1].type.name);
       return this.pokemon().types[1].type.name;
     }
 
@@ -74,6 +81,19 @@ class PokemonInfo extends Component<Props, State> {
         {Utility.ucFirst(this.getType(slot))}
       </span>
     );
+  }
+
+  getEnglishDescription() {
+    let entries = this.props.PokemonSpeciesData.flavor_text_entries;
+    let description = null;
+
+    entries.forEach(descObj => {
+      if (descObj.language.name === "en") {
+        description = descObj.flavor_text;
+      }
+    });
+
+    return description;
   }
 }
 

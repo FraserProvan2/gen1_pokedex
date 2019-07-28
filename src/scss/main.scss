@@ -17,6 +17,14 @@ body {
   margin-top: -15px;
 }
 
+.pokemon-description {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  line-height: 1.3;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .measurement{
   font-size: 10px;
   font-weight: 600;
@@ -26,4 +34,8 @@ body {
 // Overriding Bootstrap
 .btn {
   border-radius: 0.25rem;
+}
+
+p {
+  font-family: unset;
 }

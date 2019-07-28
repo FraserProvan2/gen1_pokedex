@@ -55,24 +55,31 @@ class App extends Component<Props, State> {
         species: {
           url: ""
         },
-        types: [{
-          slot: 1,
-          type: {
-            name: "",
+        types: [
+          {
+            slot: 1,
+            type: {
+              name: ""
+            }
           },
-        },
-        {
-          slot: 1,
-          type: {
-            name: "",
-          },
-        }]
+          {
+            slot: 1,
+            type: {
+              name: ""
+            }
+          }
+        ]
       },
       pokemonSpeciesData: {
         evolution_chain: {
           url: ""
         },
-        flavor_text_entries: []
+        flavor_text_entries: [{
+          language: {
+            name: "",
+          },
+          flavor_text: ""
+        }]
       },
       error: ""
     };
@@ -117,7 +124,10 @@ class App extends Component<Props, State> {
         {/* Pokemon Info */}
         <div className="row justify-content-center mb-2">
           <div className="col-md-9">
-            <PokemonInfo pokemonData={this.state.pokemonData} />
+            <PokemonInfo
+              pokemonData={this.state.pokemonData}
+              PokemonSpeciesData={this.state.pokemonSpeciesData}
+            />
           </div>
         </div>
       </div>
