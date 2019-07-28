@@ -41,7 +41,7 @@ class App extends Component<Props, State> {
 
     this.state = {
       pokemonData: {
-        id: 1,
+        id: 0,
         name: "",
         sprites: {
           front_default: "",
@@ -54,7 +54,19 @@ class App extends Component<Props, State> {
         abilities: [],
         species: {
           url: ""
-        }
+        },
+        types: [{
+          slot: 1,
+          type: {
+            name: "",
+          },
+        },
+        {
+          slot: 1,
+          type: {
+            name: "",
+          },
+        }]
       },
       pokemonSpeciesData: {
         evolution_chain: {

@@ -13,4 +13,18 @@ export default interface PokemonData {
   species: {
     url: string;
   };
+  types: [
+    {
+      slot: number;
+      type: {
+        name: string;
+      };
+    },
+    {
+      slot: number;
+      type: {
+        name: string;
+      };
+    }
+  ];
 }

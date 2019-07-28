@@ -1,122 +1,77 @@
 .type-icon {
   display: inline-block;
-  width: 58px;
-  line-height: 1;
-  margin: 1px 0;
-  padding: 5px 0;
-  border: 1px solid #aaa;
-  border-radius: 2px;
-  color: white !important;
-  font-size: 10px;
+  height: 25px;
+  width: 66px;
+  margin-bottom: 4px;
+  margin-left: 1px;
+  margin-right: 1px;
+  background: #dbdbdb;
+  border: 1px solid #a3a3a3;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.2);
+  color: #fff;
+  font-size: .6rem;
+  font-weight: normal;
+  line-height: 1.5rem;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   text-transform: uppercase;
-  margin-right: 3px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-shadow: 1px 1px 1px #333;
+  transition: opacity .4s;
 }
-
 .normal {
-  background: #8a8a59;
-  background-image: -webkit-linear-gradient(#a8a878, #8a8a59);
-  background-image: linear-gradient(#a8a878, #8a8a59);
-  border-color: #79794e;
+  background-color: #aa9;
 }
-
 .fire {
-  background: #f08030;
-  background-image: -webkit-linear-gradient(#f08030, #dd6610);
-  background-image: linear-gradient(#f08030, #dd6610);
-  border-color: #b4530d;
+  background-color: #f42;
 }
-
 .water {
-  background: #6890f0;
-  background-image: -webkit-linear-gradient(#6890f0, #386ceb);
-  background-image: linear-gradient(#6890f0, #386ceb);
-  border-color: #1753e3;
+  background-color: #39f;
 }
-
 .electric {
-  background: #f8d030;
-  background-image: -webkit-linear-gradient(#f8d030, #f0c108);
-  background-image: linear-gradient(#f8d030, #f0c108);
-  border-color: #c19b07;
+  background-color: #fc3;
 }
-
 .grass {
-  background: #78c850;
-  background-image: -webkit-linear-gradient(#78c850, #5ca935);
-  background-image: linear-gradient(#78c850, #5ca935);
-  border-color: #4a892b;
+  background-color: #7c5;
 }
-
 .ice {
-  background: #98d8d8;
-  background-image: -webkit-linear-gradient(#98d8d8, #69c6c6);
-  background-image: linear-gradient(#98d8d8, #69c6c6);
-  border-color: #45b6b6;
+  background-color: #6cf;
 }
-
 .fighting {
-  background: #c03028;
-  background-image: -webkit-linear-gradient(#c03028, #9d2721);
-  background-image: linear-gradient(#c03028, #9d2721);
-  border-color: #82211b;
+  background-color: #b54;
 }
-
 .poison {
-  background: #a040a0;
-  background-image: -webkit-linear-gradient(#a040a0, #803380);
-  background-image: linear-gradient(#a040a0, #803380);
-  border-color: #662966;
+  background-color: #a59;
 }
-
 .ground {
-  background: #e0c068;
-  background-image: -webkit-linear-gradient(#e0c068, #d4a82f);
-  background-image: linear-gradient(#e0c068, #d4a82f);
-  border-color: #aa8623;
+  background-color: #db5;
 }
-
-.psychic {
-  background: #f85888;
-  background-image: -webkit-linear-gradient(#f85888, #f61c5d);
-  background-image: linear-gradient(#f85888, #f61c5d);
-  border-color: #ba083d;
-}
-
-.bug {
-  background: #a8b820;
-  background-image: -webkit-linear-gradient(#a8b820, #8d9a1b);
-  background-image: linear-gradient(#a8b820, #8d9a1b);
-  border-color: #616b13;
-}
-
-.rock {
-  background: #b8a038;
-  background-image: -webkit-linear-gradient(#b8a038, #93802d);
-  background-image: linear-gradient(#b8a038, #93802d);
-  border-color: #746523;
-}
-
-.dragon {
-  background: #7038f8;
-  background-image: -webkit-linear-gradient(#7038f8, #4c08ef);
-  background-image: linear-gradient(#7038f8, #4c08ef);
-  border-color: #3d07c0;
-}
-
-.ghost {
-  background: #705898;
-  background-image: -webkit-linear-gradient(#705898, #554374);
-  background-image: linear-gradient(#705898, #554374);
-  border-color: #413359;
-}
-
 .flying {
-  background: #a890f0;
-  background-image: -webkit-linear-gradient(#a890f0, #9180c4);
-  background-image: linear-gradient(#a890f0, #9180c4);
-  border-color: #7762b6;
+  background-color: #89f;
+}
+.psychic {
+  background-color: #f59;
+}
+.bug {
+  background-color: #ab2;
+}
+.rock {
+  background-color: #ba6;
+}
+.ghost {
+  background-color: #66b;
+}
+.dragon {
+  background-color: #76e;
+}
+.dark {
+  background-color: #754;
+}
+.steel {
+  background-color: #aab;
+}
+.fairy {
+  background-color: #e9e;
+}
+.curse {
+  background-color: #698;
 }

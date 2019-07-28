@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 body {
   background-image: url("./../images/bg.png");
 }
@@ -11,8 +13,14 @@ body {
 .pokemon-img {
   width: 200px;
   image-rendering: pixelated;
-  margin-bottom: -20px;
-  margin-top: -20px;
+  margin-bottom: -15px;
+  margin-top: -15px;
+}
+
+.measurement{
+  font-size: 10px;
+  font-weight: 600;
+  color: $secondary;
 }
 
 // Overriding Bootstrap
