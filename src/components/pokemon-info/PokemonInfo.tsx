@@ -18,20 +18,19 @@ class PokemonInfo extends Component<Props, State> {
       <div className="card">
         <div className="card-body">
           {/* Pokemon Profile (Image and Name) */}
-          <div className="row">
-            <div className="col-md-12 text-center mb-2">
-              <h5>
-                <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
-                {Utility.ucFirst(this.pokemon().name)}
-              </h5>
+          <div className="row mb-2">
+            <div className="col-md-12 text-center">
               <img
                 className="pokemon-img"
                 src={this.pokemon().sprites.front_default}
                 alt=""
               />
+              <h3>
+                <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
+                {Utility.ucFirst(this.pokemon().name)}
+              </h3>
 
-              <br />
-              {/* Stats */}
+              {/* Types */}
               {this.getType(1) ? this.renderType(1) : null}
               {this.getType(0) ? this.renderType(0) : null}
             </div>
@@ -39,21 +38,32 @@ class PokemonInfo extends Component<Props, State> {
 
           {/* Information */}
           <div className="row">
-            <div className="col-md-6">
-              <div className="pokemon-description p-3 m-1">
+            <div className="col-md-6 mb-2">
+              <h6>Description</h6>
+              <div className="pokemon-description p-3">
+                {/* Description */}
                 <small>"{this.getEnglishDescription()}"</small>
+
+                <hr />
+
+                {/* Height/Weight */}
+                <div className="small text-center">
+                  Height: {this.pokemon().height}{" "}
+                  <span className="measurement">hg</span>, Weight:{" "}
+                  {this.pokemon().weight}{" "}
+                  <span className="measurement">dm</span>
+                </div>
               </div>
             </div>
             <div className="col-md-6">
-              <p>
-                {/* Height/Weight */}
-                <small>
-                  Height: {this.pokemon().height}
-                  <span className="measurement">hg</span>, Weight:{" "}
-                  {this.pokemon().weight}
-                  <span className="measurement">dm</span>
-                </small>
-              </p>
+              <h6>Base Stats</h6>
+            </div>
+          </div>
+
+          {/* Moves */}
+          <div className="row">
+            <div className="col-md-6">
+              <h6>Moves</h6>
             </div>
           </div>
         </div>
