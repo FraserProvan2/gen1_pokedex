@@ -15,6 +15,7 @@ import PokemonInfo from "./pokemon-info/PokemonInfo";
 
 // Models
 import PokemonData from "./../models/PokemonData";
+import PokemonSpeciesData from "./../models/PokemonSpeciesData";
 
 // Helpers
 import Utility from "../helpers/Utility";
@@ -30,6 +31,7 @@ interface Props {}
 
 interface State {
   pokemonData: PokemonData;
+  pokemonSpeciesData: PokemonSpeciesData;
   error: "";
 }
 
@@ -46,7 +48,19 @@ class App extends Component<Props, State> {
           front_shiny: ""
         },
         height: "",
-        weight: ""
+        weight: "",
+        base_experience: 0,
+        moves: [],
+        abilities: [],
+        species: {
+          url: ""
+        }
+      },
+      pokemonSpeciesData: {
+        evolution_chain: {
+          url: ""
+        },
+        flavor_text_entries: []
       },
       error: ""
     };
@@ -104,10 +118,22 @@ class App extends Component<Props, State> {
     return PokeAPI.getPokemonByName(value)
       .then((pokemonData: any) => {
         this.setState({ pokemonData });
+
+        // Set other related data
+        this.setPokemonSecondaryData();
       })
       .catch((error: any) => {
         this.setState({ error });
       });
+  };
+
+  setPokemonSecondaryData = () => {
+    // set Species Data
+    PokeAPI.resource(this.state.pokemonData.species.url).then(
+      (pokemonSpeciesData: any) => {
+        this.setState({ pokemonSpeciesData });
+      }
+    );
   };
 
   previousPokemon = () => {

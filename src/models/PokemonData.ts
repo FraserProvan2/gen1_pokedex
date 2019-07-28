@@ -7,4 +7,10 @@ export default interface PokemonData {
   };
   height: string;
   weight: string;
+  abilities: [];
+  base_experience: number;
+  moves: string[];
+  species: {
+    url: string;
+  };
 }
