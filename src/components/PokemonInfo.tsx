@@ -133,7 +133,7 @@ class PokemonInfo extends Component<Props, State> {
         <div className="row">
           <div className="col-md-12">
             <h6>Moves</h6>
-            <table className="table table-borderless w-100 text-center">
+            <table className="table table-borderless w-100">
               <thead>
                 <tr className="table-secondary rounded">
                   <th>Level Learned</th>

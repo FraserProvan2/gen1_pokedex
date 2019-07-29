@@ -52,13 +52,13 @@ class App extends Component<Props, State> {
         base_experience: 0,
         moves: [
           {
-            move:
-            {
+            move: {
               name: ""
             },
-            version_group_details: [{
-              level_learned_at: 0
-            }
+            version_group_details: [
+              {
+                level_learned_at: 0
+              }
             ]
           }
         ],
@@ -92,14 +92,14 @@ class App extends Component<Props, State> {
             flavor_text: ""
           }
         ],
-          stats: [
-            {
-              base_stat: 0,
-              stat: {
-                name: ""
-              },
+        stats: [
+          {
+            base_stat: 0,
+            stat: {
+              name: ""
             }
-        ],
+          }
+        ]
       },
       error: ""
     };
