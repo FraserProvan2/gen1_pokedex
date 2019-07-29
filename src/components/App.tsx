@@ -10,8 +10,8 @@ import {
 
 // Components
 import SearchPokemon from "./search/SearchPokemon";
-import NextPrevious from "./next-previous/NextPrevious";
-import PokemonInfo from "./pokemon-info/PokemonInfo";
+import NextPrevious from "./NextPrevious";
+import PokemonInfo from "./PokemonInfo";
 
 // Models
 import PokemonData from "./../models/PokemonData";

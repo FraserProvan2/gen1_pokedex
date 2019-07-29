@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Utility from "../../helpers/Utility";
+import Utility from "../helpers/Utility";
 
 // Models
-import PokemonData from "../../models/PokemonData";
-import PokemonSpeciesData from "../../models/PokemonSpeciesData";
+import PokemonData from "../models/PokemonData";
+import PokemonSpeciesData from "../models/PokemonSpeciesData";
 
 interface Props {
   pokemonData: PokemonData;
