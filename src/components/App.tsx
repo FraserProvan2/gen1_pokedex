@@ -57,7 +57,7 @@ class App extends Component<Props, State> {
         },
         types: [
           {
-            slot: 1,
+            slot: 0,
             type: {
               name: ""
             }
@@ -68,18 +68,28 @@ class App extends Component<Props, State> {
               name: ""
             }
           }
+        ],
+        stats: [
+          {
+            base_stat: 0,
+            stat: {
+              name: "string"
+            }
+          }
         ]
       },
-      pokemonSpeciesData: {  
+      pokemonSpeciesData: {
         evolution_chain: {
           url: ""
         },
-        flavor_text_entries: [{
-          language: {
-            name: "",
-          },
-          flavor_text: ""
-        }]
+        flavor_text_entries: [
+          {
+            language: {
+              name: ""
+            },
+            flavor_text: ""
+          }
+        ],
       },
       error: ""
     };

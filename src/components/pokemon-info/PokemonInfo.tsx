@@ -57,6 +57,7 @@ class PokemonInfo extends Component<Props, State> {
             </div>
             <div className="col-md-6">
               <h6>Base Stats</h6>
+              {this.renderBaseStats()}
             </div>
           </div>
 
@@ -96,6 +97,28 @@ class PokemonInfo extends Component<Props, State> {
     });
 
     return description;
+  }
+
+  renderBaseStats() {
+    var stats = this.pokemon().stats;
+    return (
+      <ul className="list-group">
+        {stats.map(function(name, index) {
+          console.log(index);
+          return (
+              <li
+                className="list-group-item d-flex justify-content-between align-items-center"
+                key={index}
+              >
+                {Utility.ucFirst(name.stat.name)}
+                <span className="badge badge-primary badge-pill w-25">
+                  {name.base_stat}
+                </span>
+              </li>
+          );
+        })}
+      </ul>
+    );
   }
 }
 

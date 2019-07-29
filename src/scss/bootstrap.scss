@@ -5257,7 +5257,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding: 0.6em 1.2em;
   font-size: 75%;
-  font-weight: normal;
+  font-weight: 700;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -5702,7 +5702,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 0.75rem 1.25rem;
+  padding: 0.40rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -10777,5 +10777,5 @@ table-primary, table-secondary, table-success, table-info, table-warning, table-
 }
 
 .list-group {
-  font-size: 0.930125rem;
+  font-size: 0.8rem;
 }

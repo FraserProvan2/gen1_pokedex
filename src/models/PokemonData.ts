@@ -27,4 +27,12 @@ export default interface PokemonData {
       };
     }
   ];
+  stats: [
+    {
+      base_stat: number;
+      stat: {
+        name: string;
+      };
+    }
+  ];
 }
