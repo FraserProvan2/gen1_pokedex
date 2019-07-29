@@ -9,17 +9,22 @@ export default interface PokemonData {
   weight: string;
   abilities: [];
   base_experience: number;
-  moves: string[];
+  moves: [
+    {
+      move:
+      {
+        name: string
+      },
+      version_group_details: [{
+        level_learned_at: number
+      }
+      ]
+    }
+  ];
   species: {
     url: string;
   };
   types: [
-    {
-      slot: number;
-      type: {
-        name: string;
-      };
-    },
     {
       slot: number;
       type: {

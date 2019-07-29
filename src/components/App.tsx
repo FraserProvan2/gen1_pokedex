@@ -50,7 +50,18 @@ class App extends Component<Props, State> {
         height: "",
         weight: "",
         base_experience: 0,
-        moves: [],
+        moves: [
+          {
+            move:
+            {
+              name: ""
+            },
+            version_group_details: [{
+              level_learned_at: 0
+            }
+            ]
+          }
+        ],
         abilities: [],
         species: {
           url: ""
@@ -58,12 +69,6 @@ class App extends Component<Props, State> {
         types: [
           {
             slot: 0,
-            type: {
-              name: ""
-            }
-          },
-          {
-            slot: 1,
             type: {
               name: ""
             }
@@ -79,9 +84,6 @@ class App extends Component<Props, State> {
         ]
       },
       pokemonSpeciesData: {
-        evolution_chain: {
-          url: ""
-        },
         flavor_text_entries: [
           {
             language: {
@@ -89,6 +91,14 @@ class App extends Component<Props, State> {
             },
             flavor_text: ""
           }
+        ],
+          stats: [
+            {
+              base_stat: 0,
+              stat: {
+                name: ""
+              },
+            }
         ],
       },
       error: ""
