@@ -135,7 +135,7 @@ class PokemonInfo extends Component<Props, State> {
             <h6>Moves</h6>
             <table className="table table-borderless w-100">
               <thead>
-                <tr className="table-secondary rounded">
+                <tr className="table-secondary">
                   <th>Level Learned</th>
                   <th>Move</th>
                 </tr>
@@ -144,7 +144,7 @@ class PokemonInfo extends Component<Props, State> {
                 {all_moves.map(function(current_move: any, index: number) {
                   return (
                     <tr key={index}>
-                      <th className="level-col">{index}</th>
+                      <th>{index}</th>
                       <th>{Utility.ucFirst(current_move.move)}</th>
                     </tr>
                   );
