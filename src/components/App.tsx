@@ -70,7 +70,7 @@ class App extends Component<Props, State> {
           }
         ]
       },
-      pokemonSpeciesData: {
+      pokemonSpeciesData: {  
         evolution_chain: {
           url: ""
         },

@@ -1,8 +1,16 @@
 @import 'variables.scss';
 
+// Core
+
 body {
   background-image: url("./../images/bg.png");
 }
+
+p {
+  font-family: unset;
+}
+
+// Pokemon Info
 
 .pokemon-index {
   color: #ff3232;
@@ -31,10 +39,7 @@ body {
 }
 
 // Overriding Bootstrap
+
 .btn {
   border-radius: 0.25rem;
-}
-
-p {
-  font-family: unset;
 }

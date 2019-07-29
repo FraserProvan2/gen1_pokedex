@@ -5,6 +5,13 @@ export default class Utility {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  static isset(value: any): boolean {    
+    if (typeof value !== "undefined") {
+      return true;
+    }
+    return false;
+  }
+
   static randomPokemonId() {
     return Math.floor(Math.random() * 807 + 1);
   }

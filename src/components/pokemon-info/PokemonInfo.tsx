@@ -31,8 +31,8 @@ class PokemonInfo extends Component<Props, State> {
               </h3>
 
               {/* Types */}
-              {this.getType(1) ? this.renderType(1) : null}
-              {this.getType(0) ? this.renderType(0) : null}
+              {this.renderType(1) ? this.renderType(1) : null}
+              {this.renderType(0) ? this.renderType(0) : null}
             </div>
           </div>
 
@@ -48,9 +48,9 @@ class PokemonInfo extends Component<Props, State> {
 
                 {/* Height/Weight */}
                 <div className="small text-center">
-                  Height: {this.pokemon().height}{" "}
+                  Height: {this.pokemon().height}
                   <span className="measurement">hg</span>, Weight:{" "}
-                  {this.pokemon().weight}{" "}
+                  {this.pokemon().weight}
                   <span className="measurement">dm</span>
                 </div>
               </div>
@@ -75,23 +75,15 @@ class PokemonInfo extends Component<Props, State> {
     return this.props.pokemonData;
   }
 
-  getType = (slot: number): string => {
-    if (slot === 0 && typeof this.pokemon().types[0] !== "undefined") {
-      return this.pokemon().types[0].type.name;
-    } else if (slot === 1 && typeof this.pokemon().types[1] !== "undefined") {
-      return this.pokemon().types[1].type.name;
+  renderType = (slot: number) => {
+    if (Utility.isset(this.pokemon().types[slot])) {
+      let type = this.pokemon().types[slot].type.name;
+      return (
+        <span className={"type-icon " + type}>{Utility.ucFirst(type)}</span>
+      );
     }
-
-    return "";
+    return null;
   };
-
-  renderType(slot: number) {
-    return (
-      <span className={"type-icon " + this.getType(slot)}>
-        {Utility.ucFirst(this.getType(slot))}
-      </span>
-    );
-  }
 
   getEnglishDescription() {
     let entries = this.props.PokemonSpeciesData.flavor_text_entries;

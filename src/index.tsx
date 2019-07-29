@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import "./scss/variables.scss";
 import "./scss/bootstrap.scss";
 import "./scss/main.scss";
-import "./scss/pokemonTypes.scss";
+import "./scss/pokemon-types.scss";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
