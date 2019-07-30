@@ -8,7 +8,7 @@ import PokemonData from "../../models/PokemonData";
 
 interface Props {
   setPokemon: (value: any) => any;
-  pokemonData: PokemonData;
+  pokemonData: PokemonData | null;
 }
 
 interface State {
@@ -22,7 +22,7 @@ class SearchPokemon extends React.Component<Props, State> {
 
     // start for ID: 1
     this.state = {
-      pokemonName: this.props.pokemonData.name,
+      pokemonName: this.props.pokemonData ? this.props.pokemonData.name : "",
       pokemonNumbers: this.createSelectablePokemonNumbers()
     };
   }
@@ -39,9 +39,7 @@ class SearchPokemon extends React.Component<Props, State> {
               <select
                 className="form-control text-center"
                 onChange={this.updatePokemonNumber.bind(this)}
-                value={
-                  this.props.pokemonData.id ? this.props.pokemonData.id : 1
-                }
+                value={this.props.pokemonData ? this.props.pokemonData.id : 1}
               >
                 {this.state.pokemonNumbers.map(numbers => {
                   return (
@@ -54,9 +52,7 @@ class SearchPokemon extends React.Component<Props, State> {
             </div>
             <div className="col-9">
               <SearchInput
-                name={
-                  this.props.pokemonData.name ? this.props.pokemonData.name : ""
-                }
+                name={this.props.pokemonData ? this.props.pokemonData.name : ""}
                 searchPokemon={this.props.setPokemon}
               />
             </div>
@@ -77,9 +73,11 @@ class SearchPokemon extends React.Component<Props, State> {
   updatePokemonNumber(e: any) {
     this.props.setPokemon(e.target.value);
 
-    this.setState({
-      pokemonName: this.props.pokemonData.name
-    });
+    if (this.props.pokemonData) {
+      this.setState({
+        pokemonName: this.props.pokemonData.name
+      });
+    }
   }
 }
 

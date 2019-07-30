@@ -10,7 +10,7 @@ import {
 
 // Components
 import SearchPokemon from "./search/SearchPokemon";
-import NextPrevious from "./ChangePokemonBar";
+import ChangePokemonBar from "./ChangePokemonBar";
 import PokemonInfo from "./PokemonDetails";
 
 // Models
@@ -30,9 +30,8 @@ library.add(faArrowCircleLeft, faArrowCircleRight, faQuestionCircle);
 interface Props {}
 
 interface State {
-  pokemonData: PokemonData;
-  pokemonSpeciesData: PokemonSpeciesData;
-  error: "";
+  pokemonData: PokemonData | null;
+  pokemonSpeciesData: PokemonSpeciesData | null;
 }
 
 class App extends Component<Props, State> {
@@ -40,150 +39,131 @@ class App extends Component<Props, State> {
     super(props);
 
     this.state = {
-      pokemonData: {
-        id: 0,
-        name: "",
-        sprites: {
-          front_default: "",
-          front_shiny: ""
-        },
-        height: "",
-        weight: "",
-        base_experience: 0,
-        moves: [
-          {
-            move: {
-              name: ""
-            },
-            version_group_details: [
-              {
-                level_learned_at: 0
-              }
-            ]
-          }
-        ],
-        abilities: [],
-        species: {
-          url: ""
-        },
-        types: [
-          {
-            slot: 0,
-            type: {
-              name: ""
-            }
-          }
-        ],
-        stats: [
-          {
-            base_stat: 0,
-            stat: {
-              name: "string"
-            }
-          }
-        ]
-      },
-      pokemonSpeciesData: {
-        flavor_text_entries: [
-          {
-            language: {
-              name: ""
-            },
-            flavor_text: ""
-          }
-        ],
-        stats: [
-          {
-            base_stat: 0,
-            stat: {
-              name: ""
-            }
-          }
-        ]
-      },
-      error: ""
+      pokemonData: null,
+      pokemonSpeciesData: null
     };
 
     // default ID
     this.setPokemonData(Utility.randomPokemonId());
 
-    // Search functions bound
-    this.setPokemonData = this.setPokemonData.bind(this);
+    if (this.state.pokemonData) {
+      // Search functions bound
+      this.setPokemonData = this.setPokemonData.bind(this);
 
-    // Next Previous functions bound
-    this.previousPokemon = this.previousPokemon.bind(this);
-    this.nextPokemon = this.nextPokemon.bind(this);
-    this.randomPokemon = this.randomPokemon.bind(this);
+      // ChangePokemonBar functions bound
+      this.previousPokemon = this.previousPokemon.bind(this);
+      this.nextPokemon = this.nextPokemon.bind(this);
+      this.randomPokemon = this.randomPokemon.bind(this);
+    }
   }
+
+  /**
+   *
+   * Rendering The Application
+   *
+   */
 
   render() {
     return (
       <div className="App">
-        {/* Search Box */}
-        <div className="row justify-content-center mb-2">
-          <div className="col-md-9">
-            <SearchPokemon
-              pokemonData={this.state.pokemonData}
-              setPokemon={this.setPokemonData}
-            />
-          </div>
-        </div>
+        {this.renderSearch()}
 
-        {/* Next - Previous */}
-        <div className="row justify-content-center mb-2">
-          <div className="col-md-9">
-            <NextPrevious
-              pokemonData={this.state.pokemonData}
-              previousPokemon={this.previousPokemon}
-              nextPokemon={this.nextPokemon}
-              randomPokemon={this.randomPokemon}
-            />
-          </div>
-        </div>
+        {/* only render the following when pokemonData is present */}
+        {this.state.pokemonData ? this.renderChangePokemonBar() : null}
+        {this.state.pokemonData ? this.renderPokemonInfo() : null}
+      </div>
+    );
+  }
 
-        {/* Pokemon Info */}
-        <div className="row justify-content-center mb-2">
-          <div className="col-md-9">
-            <PokemonInfo
-              pokemonData={this.state.pokemonData}
-              PokemonSpeciesData={this.state.pokemonSpeciesData}
-            />
-          </div>
+  renderSearch() {
+    return (
+      <div className="row justify-content-center mb-2">
+        <div className="col-md-9">
+          <SearchPokemon
+            pokemonData={this.state.pokemonData ? this.state.pokemonData : null}
+            setPokemon={this.setPokemonData}
+          />
         </div>
       </div>
     );
   }
 
-  // GET pokemon (PokeAPI v2)
-  // param can either be a string to get data by Name, or a number to get by ID
-  setPokemonData = (value: any) => {
-    return PokeAPI.getPokemonByName(value)
-      .then((pokemonData: any) => {
-        this.setState({ pokemonData });
+  renderChangePokemonBar() {
+    if (!this.state.pokemonData) {
+      return;
+    }
+    return (
+      <div className="row justify-content-center mb-2">
+        <div className="col-md-9">
+          <ChangePokemonBar
+            pokemonData={this.state.pokemonData}
+            previousPokemon={this.previousPokemon}
+            nextPokemon={this.nextPokemon}
+            randomPokemon={this.randomPokemon}
+          />
+        </div>
+      </div>
+    );
+  }
 
-        // Set other related data
-        this.setPokemonSecondaryData();
-      })
-      .catch((error: any) => {
-        this.setState({ error });
-      });
+  renderPokemonInfo() {
+    if (!this.state.pokemonData || !this.state.pokemonSpeciesData) {
+      return;
+    }
+    return (
+      <div className="row justify-content-center mb-2">
+        <div className="col-md-9">
+          <PokemonInfo
+            pokemonData={this.state.pokemonData}
+            PokemonSpeciesData={this.state.pokemonSpeciesData}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  /**
+   *
+   * PokeAPI methods
+   *
+   */
+
+  setPokemonData = (value: any) => {
+    return PokeAPI.getPokemonByName(value).then((pokemonData: any) => {
+      this.setState({ pokemonData });
+
+      // Set other related data
+      if (this.state.pokemonData) {
+        this.setPokemonSecondaryData(this.state.pokemonData);
+      }
+    });
   };
 
-  setPokemonSecondaryData = () => {
+  setPokemonSecondaryData = (pokemonData: any) => {
     // set Species Data
-    PokeAPI.resource(this.state.pokemonData.species.url).then(
+    PokeAPI.resource(pokemonData.species.url).then(
       (pokemonSpeciesData: any) => {
         this.setState({ pokemonSpeciesData });
       }
     );
   };
 
+  /**
+   *
+   * ChangePokemonBar methods
+   *
+   */
+
   previousPokemon = () => {
-    this.setPokemonData(this.state.pokemonData.id - 1);
+    if (this.state.pokemonData) {
+      this.setPokemonData(this.state.pokemonData.id - 1);
+    }
   };
 
   nextPokemon = () => {
-    this.setPokemonData(this.state.pokemonData.id + 1);
+    if (this.state.pokemonData) {
+      this.setPokemonData(this.state.pokemonData.id + 1);
+    }
   };
 
   randomPokemon = () => {
