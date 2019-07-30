@@ -15,7 +15,7 @@ interface Props {
 
 interface State {
   value: string;
-  suggestions: any[];
+  suggestions: Object[];
 }
 
 class SearchInput extends React.Component<Props, State> {
@@ -88,7 +88,7 @@ class SearchInput extends React.Component<Props, State> {
 
   getSuggestionValue = (suggestion: any) => {
     this.props.searchPokemon(suggestion.name);
-
+    console.log(suggestion);
     return "";
   };
 

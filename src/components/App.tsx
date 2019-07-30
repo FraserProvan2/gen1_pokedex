@@ -43,7 +43,7 @@ class App extends Component<Props, State> {
       pokemonSpeciesData: null
     };
 
-    // default ID
+    // set random pokemon on render
     this.setPokemonData(Utility.randomPokemonId());
 
     if (this.state.pokemonData) {
@@ -128,8 +128,8 @@ class App extends Component<Props, State> {
    *
    */
 
-  setPokemonData = (value: any) => {
-    return PokeAPI.getPokemonByName(value).then((pokemonData: any) => {
+  setPokemonData = (value: number) => {
+    return PokeAPI.getPokemonByName(value).then((pokemonData: PokemonData) => {
       this.setState({ pokemonData });
 
       // Set other related data
@@ -139,10 +139,10 @@ class App extends Component<Props, State> {
     });
   };
 
-  setPokemonSecondaryData = (pokemonData: any) => {
+  setPokemonSecondaryData = (pokemonData: PokemonData) => {
     // set Species Data
     PokeAPI.resource(pokemonData.species.url).then(
-      (pokemonSpeciesData: any) => {
+      (pokemonSpeciesData: PokemonSpeciesData) => {
         this.setState({ pokemonSpeciesData });
       }
     );
@@ -154,19 +154,19 @@ class App extends Component<Props, State> {
    *
    */
 
-  previousPokemon = () => {
+  previousPokemon = (): void => {
     if (this.state.pokemonData) {
       this.setPokemonData(this.state.pokemonData.id - 1);
     }
   };
 
-  nextPokemon = () => {
+  nextPokemon = (): void => {
     if (this.state.pokemonData) {
       this.setPokemonData(this.state.pokemonData.id + 1);
     }
   };
 
-  randomPokemon = () => {
+  randomPokemon = (): void => {
     this.setPokemonData(Utility.randomPokemonId());
   };
 }

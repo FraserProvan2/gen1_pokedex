@@ -118,7 +118,7 @@ class PokemonInfo extends Component<Props, State> {
 
   renderMoves() {
     let moves = this.props.pokemonData.moves;
-    let all_moves: any = [];
+    let all_moves: any[] = [];
 
     moves.forEach((current_move, index) => {
       if (moves[index].version_group_details[0].level_learned_at > 1) {

@@ -7,12 +7,12 @@ import SearchInput from "./_SearchInput";
 import PokemonData from "../../models/PokemonData";
 
 interface Props {
-  setPokemon: (value: any) => any;
+  setPokemon: (value: any) => PokemonData;
   pokemonData: PokemonData | null;
 }
 
 interface State {
-  pokemonName: string;
+  pokemonName: string | null;
   pokemonNumbers: any[];
 }
 
@@ -22,7 +22,7 @@ class SearchPokemon extends React.Component<Props, State> {
 
     // start for ID: 1
     this.state = {
-      pokemonName: this.props.pokemonData ? this.props.pokemonData.name : "",
+      pokemonName: this.props.pokemonData ? this.props.pokemonData.name : null,
       pokemonNumbers: this.createSelectablePokemonNumbers()
     };
   }

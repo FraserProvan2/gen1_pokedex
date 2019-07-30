@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PokemonData from "../models/PokemonData";
 
 interface Props {
-  previousPokemon: () => any;
-  nextPokemon: () => any;
-  randomPokemon: () => any;
+  previousPokemon: () => void;
+  nextPokemon: () => void;
+  randomPokemon: () => void;
   pokemonData: PokemonData;
 }
 
