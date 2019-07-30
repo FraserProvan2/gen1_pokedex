@@ -33,8 +33,8 @@ class SearchPokemon extends React.Component<Props, State> {
         <div className="card-body">
           <h6>Search Pokémon</h6>
 
-          {/* Input */}
           <div className="form-row mb-2">
+            {/* Select */}
             <div className="col-3">
               <select
                 className="form-control text-center"
@@ -50,6 +50,7 @@ class SearchPokemon extends React.Component<Props, State> {
                 })}
               </select>
             </div>
+            {/* Input */}
             <div className="col-9">
               <SearchInput
                 name={this.props.pokemonData ? this.props.pokemonData.name : ""}

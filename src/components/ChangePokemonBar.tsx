@@ -13,12 +13,12 @@ interface Props {
 
 interface State {}
 
-class NextPrevious extends Component<Props, State> {
+class ChangePokemonBar extends Component<Props, State> {
   render() {
     return (
       <div className="btn-group w-100" role="group">
         {/* Dont render less than 1 */}
-        {this.pokemonNum() - 1 > 0 ? this.showPrevious() : ""}{" "}
+        {this.pokemonNum() - 1 > 0 ? this.renderShowPrevious() : ""}{" "}
         <button
           type="button"
           className="btn btn-primary w-50"
@@ -27,16 +27,12 @@ class NextPrevious extends Component<Props, State> {
           <FontAwesomeIcon icon="question-circle" />
         </button>
         {/* Dont render more than 807  */}
-        {this.pokemonNum() + 1 < 808 ? this.showNext() : ""}{" "}
+        {this.pokemonNum() + 1 < 808 ? this.renderShowNext() : ""}{" "}
       </div>
     );
   }
 
-  pokemonNum() {
-    return this.props.pokemonData.id;
-  }
-
-  showPrevious() {
+  renderShowPrevious() {
     return (
       <button
         type="button"
@@ -49,7 +45,7 @@ class NextPrevious extends Component<Props, State> {
     );
   }
 
-  showNext() {
+  renderShowNext() {
     return (
       <button
         type="button"
@@ -61,6 +57,10 @@ class NextPrevious extends Component<Props, State> {
       </button>
     );
   }
+
+  pokemonNum() {
+    return this.props.pokemonData.id;
+  }
 }
 
-export default NextPrevious;
+export default ChangePokemonBar;

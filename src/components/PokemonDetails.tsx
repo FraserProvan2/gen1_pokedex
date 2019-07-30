@@ -20,45 +20,14 @@ class PokemonInfo extends Component<Props, State> {
           {/* Pokemon Profile (Image and Name) */}
           <div className="row mb-3">
             <div className="col-md-12 text-center">
-              <img
-                className="pokemon-img"
-                src={this.pokemon().sprites.front_default}
-                alt=""
-              />
-              <h3>
-                <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
-                {Utility.ucFirst(this.pokemon().name)}
-              </h3>
-
-              {/* Types */}
-              {this.renderType(1) ? this.renderType(1) : null}
-              {this.renderType(0) ? this.renderType(0) : null}
+              {this.renderPokemonProfile()}
             </div>
           </div>
 
           {/* Information */}
           <div className="row">
-            <div className="col-md-6 mb-3">
-              <h6>Description</h6>
-              <div className="pokemon-description p-3">
-                {/* Description */}
-                <small>"{this.getEnglishDescription()}"</small>
-
-                <hr />
-
-                {/* Height/Weight */}
-                <div className="small text-center">
-                  Height: {this.pokemon().height}
-                  <span className="measurement">hg</span>, Weight:{" "}
-                  {this.pokemon().weight}
-                  <span className="measurement">dm</span>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 mb-3">
-              <h6>Base Stats</h6>
-              {this.renderBaseStats()}
-            </div>
+            <div className="col-md-6 mb-3">{this.renderDescription()}</div>
+            <div className="col-md-6 mb-3">{this.renderBaseStats()}</div>
           </div>
 
           {/* Moves */}
@@ -68,8 +37,24 @@ class PokemonInfo extends Component<Props, State> {
     );
   }
 
-  pokemon() {
-    return this.props.pokemonData;
+  renderPokemonProfile() {
+    return (
+      <div>
+        <img
+          className="pokemon-img"
+          src={this.pokemon().sprites.front_default}
+          alt="pokemon-sprite"
+        />
+        <h3>
+          <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
+          {Utility.ucFirst(this.pokemon().name)}
+        </h3>
+
+        {/* Types */}
+        {this.renderType(1) ? this.renderType(1) : null}
+        {this.renderType(0) ? this.renderType(0) : null}
+      </div>
+    );
   }
 
   renderType = (slot: number) => {
@@ -82,7 +67,7 @@ class PokemonInfo extends Component<Props, State> {
     return null;
   };
 
-  getEnglishDescription() {
+  renderDescription() {
     let entries = this.props.PokemonSpeciesData.flavor_text_entries;
     let description = null;
 
@@ -92,27 +77,48 @@ class PokemonInfo extends Component<Props, State> {
       }
     });
 
-    return description;
+    return (
+      <div>
+        <h6>Description</h6>
+        <div className="pokemon-description p-3">
+          {/* Description */}
+          <small>"{description}"</small>
+
+          <hr />
+
+          {/* Height/Weight */}
+          <div className="small text-center">
+            Height: {this.pokemon().height}
+            <span className="measurement">hg</span>, Weight:{" "}
+            {this.pokemon().weight}
+            <span className="measurement">dm</span>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   renderBaseStats() {
     let stats = this.pokemon().stats;
     return (
-      <ul className="list-group">
-        {stats.map(function(name, index) {
-          return (
-            <li
-              className="list-group-item d-flex justify-content-between align-items-center border-white px-0"
-              key={index}
-            >
-              {Utility.ucFirst(name.stat.name)}
-              <span className="badge badge-primary badge-pill w-25">
-                {name.base_stat}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+      <div>
+        <h6>Base Stats</h6>
+        <ul className="list-group">
+          {stats.map(function(name, index) {
+            return (
+              <li
+                className="list-group-item d-flex justify-content-between align-items-center border-white px-0"
+                key={index}
+              >
+                {Utility.ucFirst(name.stat.name)}
+                <span className="badge badge-primary badge-pill w-25">
+                  {name.base_stat}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 
@@ -157,6 +163,10 @@ class PokemonInfo extends Component<Props, State> {
     } else {
       return false;
     }
+  }
+
+  pokemon() {
+    return this.props.pokemonData;
   }
 }
 

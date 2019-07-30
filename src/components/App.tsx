@@ -59,7 +59,7 @@ class App extends Component<Props, State> {
 
   /**
    *
-   * Rendering The Application
+   * Rendering methods
    *
    */
 
