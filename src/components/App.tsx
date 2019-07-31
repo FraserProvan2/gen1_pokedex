@@ -63,7 +63,7 @@ class App extends Component<Props, State> {
    *
    */
 
-  render() {
+  render(): JSX.Element {
     return (
       <div className="App">
         {this.renderSearch()}
@@ -75,7 +75,7 @@ class App extends Component<Props, State> {
     );
   }
 
-  renderSearch() {
+  renderSearch(): JSX.Element {
     return (
       <div className="row justify-content-center mb-2">
         <div className="col-md-9">
@@ -88,9 +88,9 @@ class App extends Component<Props, State> {
     );
   }
 
-  renderChangePokemonBar() {
+  renderChangePokemonBar(): JSX.Element | null {
     if (!this.state.pokemonData) {
-      return;
+      return null;
     }
     return (
       <div className="row justify-content-center mb-2">
@@ -106,9 +106,9 @@ class App extends Component<Props, State> {
     );
   }
 
-  renderPokemonInfo() {
+  renderPokemonInfo(): JSX.Element | null {
     if (!this.state.pokemonData || !this.state.pokemonSpeciesData) {
-      return;
+      return null;
     }
     return (
       <div className="row justify-content-center mb-2">
@@ -128,7 +128,7 @@ class App extends Component<Props, State> {
    *
    */
 
-  setPokemonData = (value: number) => {
+  setPokemonData = (value: number): PokemonData => {
     return PokeAPI.getPokemonByName(value).then((pokemonData: PokemonData) => {
       this.setState({ pokemonData });
 
@@ -139,7 +139,7 @@ class App extends Component<Props, State> {
     });
   };
 
-  setPokemonSecondaryData = (pokemonData: PokemonData) => {
+  setPokemonSecondaryData = (pokemonData: PokemonData): void => {
     // set Species Data
     PokeAPI.resource(pokemonData.species.url).then(
       (pokemonSpeciesData: PokemonSpeciesData) => {

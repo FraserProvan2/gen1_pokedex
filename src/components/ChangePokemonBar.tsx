@@ -14,7 +14,7 @@ interface Props {
 interface State {}
 
 class ChangePokemonBar extends Component<Props, State> {
-  render() {
+  render(): JSX.Element {
     return (
       <div className="btn-group w-100" role="group">
         {/* Dont render less than 1 */}
@@ -32,7 +32,7 @@ class ChangePokemonBar extends Component<Props, State> {
     );
   }
 
-  renderShowPrevious() {
+  renderShowPrevious(): JSX.Element {
     return (
       <button
         type="button"
@@ -45,7 +45,7 @@ class ChangePokemonBar extends Component<Props, State> {
     );
   }
 
-  renderShowNext() {
+  renderShowNext(): JSX.Element {
     return (
       <button
         type="button"
@@ -58,7 +58,7 @@ class ChangePokemonBar extends Component<Props, State> {
     );
   }
 
-  pokemonNum() {
+  pokemonNum(): number {
     return this.props.pokemonData.id;
   }
 }

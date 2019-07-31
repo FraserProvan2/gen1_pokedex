@@ -13,7 +13,7 @@ interface Props {
 interface State {}
 
 class PokemonInfo extends Component<Props, State> {
-  render() {
+  render(): JSX.Element {
     return (
       <div className="card">
         <div className="card-body">
@@ -37,7 +37,7 @@ class PokemonInfo extends Component<Props, State> {
     );
   }
 
-  renderPokemonProfile() {
+  renderPokemonProfile(): JSX.Element {
     return (
       <div>
         <img
@@ -57,7 +57,7 @@ class PokemonInfo extends Component<Props, State> {
     );
   }
 
-  renderType = (slot: number) => {
+  renderType = (slot: number): JSX.Element | null => {
     if (Utility.isset(this.pokemon().types[slot])) {
       let type = this.pokemon().types[slot].type.name;
       return (
@@ -67,7 +67,7 @@ class PokemonInfo extends Component<Props, State> {
     return null;
   };
 
-  renderDescription() {
+  renderDescription(): JSX.Element {
     let entries = this.props.PokemonSpeciesData.flavor_text_entries;
     let description = null;
 
@@ -98,7 +98,7 @@ class PokemonInfo extends Component<Props, State> {
     );
   }
 
-  renderBaseStats() {
+  renderBaseStats(): JSX.Element {
     let stats = this.pokemon().stats;
     return (
       <div>
@@ -122,7 +122,7 @@ class PokemonInfo extends Component<Props, State> {
     );
   }
 
-  renderMoves() {
+  renderMoves(): JSX.Element | null {
     let moves = this.props.pokemonData.moves;
     let all_moves: any[] = [];
 
@@ -161,7 +161,7 @@ class PokemonInfo extends Component<Props, State> {
         </div>
       );
     } else {
-      return false;
+      return null;
     }
   }
 

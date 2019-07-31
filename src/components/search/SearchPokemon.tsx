@@ -27,7 +27,7 @@ class SearchPokemon extends React.Component<Props, State> {
     };
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div className="card">
         <div className="card-body">
@@ -63,7 +63,7 @@ class SearchPokemon extends React.Component<Props, State> {
     );
   }
 
-  createSelectablePokemonNumbers() {
+  createSelectablePokemonNumbers(): any[] {
     let availableNumbers = [];
     for (let i = 1; i <= 807; i++) {
       availableNumbers[i] = { value: i };
@@ -71,7 +71,7 @@ class SearchPokemon extends React.Component<Props, State> {
     return availableNumbers;
   }
 
-  updatePokemonNumber(e: any) {
+  updatePokemonNumber(e: any): void {
     this.props.setPokemon(e.target.value);
 
     if (this.props.pokemonData) {

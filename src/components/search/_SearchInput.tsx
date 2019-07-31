@@ -30,7 +30,7 @@ class SearchInput extends React.Component<Props, State> {
     };
   }
 
-  render() {
+  render(): JSX.Element {
     const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: Utility.ucFirst(this.props.name)
@@ -52,29 +52,29 @@ class SearchInput extends React.Component<Props, State> {
     );
   }
 
-  onChange = (event: any, { newValue, method }: any) => {
+  onChange = (event: any, { newValue, method }: any): void => {
     this.setState({
       value: newValue
     });
   };
 
-  onSuggestionsFetchRequested = ({ value }: any) => {
+  onSuggestionsFetchRequested = ({ value }: any): void => {
     this.setState({
       suggestions: this.getSuggestions(value)
     });
   };
 
-  onSuggestionsClearRequested = () => {
+  onSuggestionsClearRequested = (): void => {
     this.setState({
       suggestions: []
     });
   };
 
-  escapeRegexCharacters(str: string) {
+  escapeRegexCharacters(str: string): string {
     return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
-  getSuggestions(value: string) {
+  getSuggestions(value: string): any[] {
     const escapedValue = this.escapeRegexCharacters(value.trim());
 
     if (escapedValue === "") {
@@ -86,13 +86,13 @@ class SearchInput extends React.Component<Props, State> {
     return pokemonNames.filter(pokemon => regex.test(pokemon.name));
   }
 
-  getSuggestionValue = (suggestion: any) => {
+  getSuggestionValue = (suggestion: any): string => {
     this.props.searchPokemon(suggestion.name);
     console.log(suggestion);
     return "";
   };
 
-  renderSuggestion(suggestion: any) {
+  renderSuggestion(suggestion: any): JSX.Element {
     return <span>{Utility.ucFirst(suggestion.name)}</span>;
   }
 }
