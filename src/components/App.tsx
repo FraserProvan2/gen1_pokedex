@@ -32,6 +32,7 @@ interface Props {}
 interface State {
   pokemonData: PokemonData | null;
   pokemonSpeciesData: PokemonSpeciesData | null;
+  shiny: boolean;
 }
 
 class App extends Component<Props, State> {
@@ -40,7 +41,8 @@ class App extends Component<Props, State> {
 
     this.state = {
       pokemonData: null,
-      pokemonSpeciesData: null
+      pokemonSpeciesData: null,
+      shiny: false
     };
 
     // set random pokemon on render
@@ -116,6 +118,7 @@ class App extends Component<Props, State> {
           <PokemonInfo
             pokemonData={this.state.pokemonData}
             PokemonSpeciesData={this.state.pokemonSpeciesData}
+            shiny={this.state.shiny}
           />
         </div>
       </div>
@@ -130,11 +133,15 @@ class App extends Component<Props, State> {
 
   setPokemonData = (value: number): PokemonData => {
     return PokeAPI.getPokemonByName(value).then((pokemonData: PokemonData) => {
+      this.rollForShiny();
       this.setState({ pokemonData });
 
       // Set other related data
       if (this.state.pokemonData) {
         this.setPokemonSecondaryData(this.state.pokemonData);
+          if (this.state.shiny) {
+            console.log("✨A Shiny " + Utility.ucFirst(this.state.pokemonData.name) + " has appread! ✨");
+          }
       }
     });
   };
@@ -169,6 +176,25 @@ class App extends Component<Props, State> {
   randomPokemon = (): void => {
     this.setPokemonData(Utility.randomPokemonId());
   };
+
+  /**
+   *
+   * Shiny Pokemon methods
+   *
+   */
+
+  rollForShiny() {
+    let shiny_roll = Math.floor(Math.random() * 10 + 1);
+    let is_shiny = false;
+
+    if (shiny_roll === 1) {
+      is_shiny = true;
+    }
+
+    this.setState({
+      shiny: is_shiny
+    });
+  }
 }
 
 export default App;

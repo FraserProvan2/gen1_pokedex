@@ -9,6 +9,7 @@ import PokemonSpeciesData from "../../models/PokemonSpeciesData";
 interface Props {
   pokemonData: PokemonData;
   PokemonSpeciesData: PokemonSpeciesData;
+  shiny: any;
 }
 
 interface State {
@@ -56,7 +57,7 @@ class PokemonInfo extends Component<Props, State> {
       <div>
         <img
           className="pokemon-img"
-          src={this.pokemon().sprites.front_default}
+          src={this.props.shiny ? this.pokemon().sprites.front_shiny : this.pokemon().sprites.front_default}
           alt="pokemon-sprite"
         />
         <h3>

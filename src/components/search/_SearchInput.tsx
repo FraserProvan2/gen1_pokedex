@@ -88,7 +88,6 @@ class SearchInput extends React.Component<Props, State> {
 
   getSuggestionValue = (suggestion: any): string => {
     this.props.searchPokemon(suggestion.name);
-    console.log(suggestion);
     return "";
   };
 
