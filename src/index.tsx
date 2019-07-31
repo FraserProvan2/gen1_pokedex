@@ -8,6 +8,7 @@ import "./scss/variables.scss";
 import "./scss/bootstrap.scss";
 import "./scss/main.scss";
 import "./scss/pokemon-types.scss";
+import "./scss/pokemon-animation.scss";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

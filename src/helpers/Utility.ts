@@ -13,6 +13,7 @@ export default class Utility {
   }
 
   static randomPokemonId() {
-    return Math.floor(Math.random() * 807 + 1);
+    // only choose generations with pixel sprites
+    return Math.floor(Math.random() * 721 + 1);
   }
 }

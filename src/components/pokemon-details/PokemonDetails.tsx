@@ -40,27 +40,33 @@ class PokemonInfo extends Component<Props, State> {
           <div className="row">
             <div className="col-md-6 mb-3">
               {this.renderDescription()}
-              <MovesModal 
-                pokemonData={this.props.pokemonData}
-              />
+              <MovesModal pokemonData={this.props.pokemonData} />
             </div>
             <div className="col-md-6 mb-3">{this.renderBaseStats()}</div>
           </div>
-
         </div>
       </div>
     );
   }
 
   renderPokemonProfile(): JSX.Element {
+    let pokemon_name_class = "";
+    if (this.props.shiny) {
+      pokemon_name_class += "pokemon-title-shiny";
+    }
+
     return (
       <div>
         <img
-          className="pokemon-img"
-          src={this.props.shiny ? this.pokemon().sprites.front_shiny : this.pokemon().sprites.front_default}
+          className="pokemon-img anim-move"
+          src={
+            this.props.shiny
+              ? this.pokemon().sprites.front_shiny
+              : this.pokemon().sprites.front_default
+          }
           alt="pokemon-sprite"
         />
-        <h3>
+        <h3 className={pokemon_name_class}>
           <span className="pokemon-index h5">#{this.pokemon().id}</span>{" "}
           {Utility.ucFirst(this.pokemon().name)}
         </h3>
