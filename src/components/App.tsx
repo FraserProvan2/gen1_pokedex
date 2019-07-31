@@ -11,7 +11,7 @@ import {
 // Components
 import SearchPokemon from "./search/SearchPokemon";
 import ChangePokemonBar from "./ChangePokemonBar";
-import PokemonInfo from "./PokemonDetails";
+import PokemonInfo from "./pokemon-details/PokemonDetails";
 
 // Models
 import PokemonData from "./../models/PokemonData";
