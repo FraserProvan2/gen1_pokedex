@@ -140,7 +140,7 @@ class App extends Component<Props, State> {
       if (this.state.pokemonData) {
         this.setPokemonSecondaryData(this.state.pokemonData);
           if (this.state.shiny) {
-            console.log("✨A Shiny " + Utility.ucFirst(this.state.pokemonData.name) + " has appread! ✨");
+            console.log("%c✨A Shiny " + Utility.ucFirst(this.state.pokemonData.name) + " has appeared! ✨", "color:#4582EC;font-size:15px;");
           }
       }
     });
