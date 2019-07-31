@@ -6,6 +6,7 @@ Minimal Pokemon Wiki built with React/TypeScript, powered by PokeAPI v2.
 
 The app was created using `create-react-app`, and uses the default build/start commands.
 
+#### `npm install`
 #### `npm run build`
 #### `npm start`
 
