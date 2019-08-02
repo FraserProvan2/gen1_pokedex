@@ -37,7 +37,7 @@ class SearchPokemon extends React.Component<Props, State> {
             {/* Select */}
             <div className="col-4">
               <select
-                className="form-control text-center h-100"
+                className="form-control text-center bg-white h-100"
                 onChange={this.updatePokemonNumber.bind(this)}
                 value={this.props.pokemonData ? this.props.pokemonData.id : 1}
               >
