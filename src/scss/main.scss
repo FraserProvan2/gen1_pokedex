@@ -12,8 +12,14 @@ p {
 
 // Pokemon Info
 
+.pokemon-info-box {
+  border-radius: 0.25rem;
+  padding: 7px;
+  background-color: #f8f9fa;
+}
+
 .pokemon-title-shiny {
-  color: #595cde!important;
+  color: #595cde !important;
 }
 
 .pokemon-index {
@@ -53,4 +59,10 @@ p {
   font-size: 0.85rem;
   font-weight: 400;
   padding: 0.85rem;
+}
+
+.badge {
+  padding: 0.6em 1em;
+  font-size: 85%;
+  font-weight: 600;
 }

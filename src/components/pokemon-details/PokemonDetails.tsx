@@ -56,7 +56,7 @@ class PokemonInfo extends Component<Props, State> {
     }
 
     return (
-      <div>
+      <div className="pokemon-info-box">
         <img
           className="pokemon-img anim-move"
           src={
